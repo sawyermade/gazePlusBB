@@ -13,3 +13,8 @@ Output: ./videoFileName-BB.avi
 Example: ./gazebb Alireza_Pizza2.avi Alireza_Pizza2.txt 250
 
 Clean: make clean
+
+Bounding Box Colors:
+1. Blue = Blink
+2. Green = Fixation
+3. Red = Saccade
