@@ -36,13 +36,13 @@ int main(int argc, char* argv[]) {
 	double tempx, tempy;
 	int x, y;
 
-	//passes all the bullshit in the start of the gaze+ txt files
+	//passes all the junk in the start of the gaze+ txt files
 	string strtemp;
 	while(fp.peek() == '#')
 		getline(fp,strtemp);
 	getline(fp,strtemp);
 
-	//sets up output video shit
+	//sets up output video stuff
 	string fnameout = argv[1], key(".");
 	size_t pos = fnameout.rfind(key);
 	if(pos != std::string::npos)
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
 	int codec = CV_FOURCC('M', 'P', '4', 'V');
 	VideoWriter vidout(fnameout, codec, vidin.get(CV_CAP_PROP_FPS), framesize);
 
-	/* position test debug shit */
+	/* position test debug crap */
 	// Mat tempImg;
 	// Rect tempBox;
 	// vector<Point> tempPts;
@@ -89,6 +89,14 @@ int main(int argc, char* argv[]) {
 				break;
 		}
 		if(fnum > i+1) {
+			
+			if(i+1 > 5) {
+				if(fixsac == "Fixation")
+					rectangle(current, box.tl(), box.br(), green, 2);
+				else
+					rectangle(current, box.tl(), box.br(), red, 2);
+			}
+
 			vidout << current;
 			continue;
 		}
@@ -127,7 +135,8 @@ int main(int argc, char* argv[]) {
 		//write to new video.
 		vidout << current;
 
-		//debug if shit gets fucked up. fnum should always be equal to i+1 down here unless the gaze txt is fucked.
+		//debug if crap gets jacked up. fnum should always be equal to i+1 down here
+		//unless last x/y coordinate in the gaze+.txt is less than totalFrames.
 		//if(i+1 != fnum) cout << "\ni != fnum. i = " << i << " fnum = " << fnum << endl; //debug
 		//cout << "\n i = " << i << endl; //debug
 	}
