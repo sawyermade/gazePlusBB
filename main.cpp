@@ -70,16 +70,21 @@ int main(int argc, char* argv[]) {
 	Rect box;
 	Scalar green(0,255,0), red(0,0,255);
 	int recsize = atoi(argv[3])/2;
-	int ax, ay, bx, by, cx, cy, dx, dy;
+	int ax, ay, bx, by, cx, cy, dx, dy, whileCount;
 	for(int i = 0; i < totalFrames; ++i) {
 		
 		vidin >> current;
+		//if(i == 15780) cout << "\ntotalFrames = " << totalFrames << "\ni = " << i << "\nfnum = " << fnum << endl; //debug
 
 		//gets the next coordinates that match the actual video frame i with fnum(frame from gaze txt).
+		whileCount = 0;
 		while(i+1 != fnum) {
 			
 			fp >> crapint1 >> crapstr >> crapint2 >> tempx >> tempy >> fnum >> fixsac;
-			
+			++whileCount;
+			if(whileCount > 4)
+				break;
+
 			if(fnum > i+1)
 				break;
 		}
@@ -122,8 +127,9 @@ int main(int argc, char* argv[]) {
 		//write to new video.
 		vidout << current;
 
-		//debug if shit gets fucked up. fnum should always be equal to i+1
-		if(i+1 != fnum) cout << "\ni != fnum. i = " << i << " fnum = " << fnum << endl;
+		//debug if shit gets fucked up. fnum should always be equal to i+1 down here.
+		//if(i+1 != fnum) cout << "\ni != fnum. i = " << i << " fnum = " << fnum << endl; //debug
+		//cout << "\n i = " << i << endl; //debug
 	}
 
 	cout << "Runtime: " << (double)(clock()-startTime)/(double)CLOCKS_PER_SEC << " seconds." << endl;
