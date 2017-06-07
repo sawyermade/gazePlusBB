@@ -127,7 +127,7 @@ int main(int argc, char* argv[]) {
 		//write to new video.
 		vidout << current;
 
-		//debug if shit gets fucked up. fnum should always be equal to i+1 down here.
+		//debug if shit gets fucked up. fnum should always be equal to i+1 down here unless the gaze txt is fucked.
 		//if(i+1 != fnum) cout << "\ni != fnum. i = " << i << " fnum = " << fnum << endl; //debug
 		//cout << "\n i = " << i << endl; //debug
 	}
