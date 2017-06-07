@@ -8,7 +8,7 @@ Compilation: Run make in directory
 
 Usage: ./gazebb videoFileName.avi videoFileName.txt boxSize1D
 
-Output: ./videoFileName.avi-BB.avi
+Output: ./videoFileName-BB.avi
 
 Example: ./gazebb Alireza_Pizza2.avi Alireza_Pizza2.txt 250
 
