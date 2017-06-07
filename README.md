@@ -10,6 +10,6 @@ Usage: ./gazebb videoFileName.avi videoFileName.txt boxSize1D
 
 Output: ./videoFileName.avi-BB.avi
 
-Example: ./gazebb Ahmad_American.avi Ahmad_American.txt 200
+Example: ./gazebb Alireza_Pizza2.avi Alireza_Pizza2.txt 250
 
 Clean: make clean
