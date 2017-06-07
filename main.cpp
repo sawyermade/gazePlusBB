@@ -126,7 +126,7 @@ int main(int argc, char* argv[]) {
 		if(i+1 != fnum) cout << "\ni != fnum. i = " << i << " fnum = " << fnum << endl;
 	}
 
-	cout << "\a" << "Runtime: " << (double)(clock()-startTime)/(double)CLOCKS_PER_SEC << " seconds." << endl;
+	cout << "Runtime: " << (double)(clock()-startTime)/(double)CLOCKS_PER_SEC << " seconds." << endl;
 
 	return 0;
 }
