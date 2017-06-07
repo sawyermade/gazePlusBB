@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 	//draws bounding box
 	Mat current;
 	Rect box;
-	Scalar green(0,255,0), red(0,0,255);
+	Scalar green(0,255,0), red(0,0,255), blue(255,0,0);
 	int recsize = atoi(argv[3])/2;
 	int ax, ay, bx, by, cx, cy, dx, dy, whileCount;
 	for(int i = 0; i < totalFrames; ++i) {
@@ -126,8 +126,11 @@ int main(int argc, char* argv[]) {
 		//if points are Fixations, makes box green. Saccade, red.
 		if(fixsac == "Fixation")
 			rectangle(current, box.tl(), box.br(), green, 2);
+		if(fixsac == "Saccade")
+			rectangle(current, box.tl(), box.br(), red, 2);
+		//if blink
 		else
-			rectangle(current, box.tl(), box.br(), red, 2);	
+			rectangle(current, box.tl(), box.br(), blue, 2);
 		// imshow("TEST", current); //debug
 		// waitKey(0); //debug
 
