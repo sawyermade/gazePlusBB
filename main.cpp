@@ -40,6 +40,7 @@ int main(int argc, char* argv[]) {
 	while(fp.peek() == '#')
 		getline(fp,strtemp);
 	getline(fp,strtemp);
+	//cout << "\nstrtemp last = " << strtemp << endl; //debug
 
 	//sets up output video stuff
 	string fnameout = argv[1], key(".");
@@ -77,23 +78,26 @@ int main(int argc, char* argv[]) {
 
 		//gets the next coordinates that match the actual video frame i with fnum(frame from gaze txt).
 		whileCount = 0;
-		while(i+1 != fnum) {
+		while(i != fnum) {
 			
 			fp >> crapint1 >> crapstr >> crapint2 >> tempx >> tempy >> fnum >> fixsac;
+			//cout << "\ni = " << i << " " << crapint1 << " " << crapstr << " " << crapint2 << " tempx = " << tempx << " tempy = " << tempy << " fnum = " << fnum << " fixsac = " << fixsac << endl;
 			++whileCount;
-			if(whileCount > 4)
+			if(whileCount > 3)
 				break;
 
-			if(fnum > i+1)
+			if(fnum > i)
 				break;
 		}
-		if(fnum > i+1) {
+		if(fnum > i) {
 			
-			if(i+1 > 5) {
+			if(i > 5) {
 				if(fixsac == "Fixation")
 					rectangle(current, box.tl(), box.br(), green, 2);
-				else
+				else if(fixsac == "Saccade")
 					rectangle(current, box.tl(), box.br(), red, 2);
+				else
+					rectangle(current, box.tl(), box.br(), blue, 2);
 			}
 
 			vidout << current;
@@ -126,7 +130,7 @@ int main(int argc, char* argv[]) {
 		//if points are Fixations, makes box green. Saccade, red.
 		if(fixsac == "Fixation")
 			rectangle(current, box.tl(), box.br(), green, 2);
-		if(fixsac == "Saccade")
+		else if(fixsac == "Saccade")
 			rectangle(current, box.tl(), box.br(), red, 2);
 		//if blink
 		else
@@ -137,9 +141,9 @@ int main(int argc, char* argv[]) {
 		//write to new video.
 		vidout << current;
 
-		//debug if crap gets jacked up. fnum should always be equal to i+1 down here
+		//debug if crap gets jacked up. fnum should always be equal to i down here
 		//unless last gaze+.txt frameNumber < totalFrames.
-		//if(i+1 != fnum) cout << "\ni != fnum. i = " << i << " fnum = " << fnum << endl; //debug
+		//if(i != fnum) cout << "\ni != fnum. i = " << i << " fnum = " << fnum << endl; //debug
 		//cout << "\n i = " << i << endl; //debug
 	}
 
