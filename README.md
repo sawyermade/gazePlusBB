@@ -1,6 +1,6 @@
 # gazePlusBB
 
-Tested on Ubuntu 16.04 LTS
+Tested on Ubuntu 16.04 LTS with opencv2
 
 Compilation: Run make in directory
 
