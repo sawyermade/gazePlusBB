@@ -135,7 +135,7 @@ int main(int argc, char* argv[]) {
 		vidout << current;
 
 		//debug if crap gets jacked up. fnum should always be equal to i+1 down here
-		//unless last x/y coordinate in the gaze+.txt is less than totalFrames.
+		//unless last gaze+.txt frameNumber < totalFrames.
 		//if(i+1 != fnum) cout << "\ni != fnum. i = " << i << " fnum = " << fnum << endl; //debug
 		//cout << "\n i = " << i << endl; //debug
 	}
